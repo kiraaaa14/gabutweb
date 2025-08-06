@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selamat Ulang Tahun 🎂</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+      #passwordGate {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 100vw;
+      height: 100vh;
+      background: #fff0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+        #passwordGate .gift-icon {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    #mainContent {
+      display: none;
+    }
+    .hero {
+      background: linear-gradient(to right, #3ed1ce, #fff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #903060;
+    }
+    #surprise {
+      display: none;
+    }
+      .photo-wrapper {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .caption {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .photo {
+    max-width: 300px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .show {
+    opacity: 1;
+  }
+  .kaki {
+  background: linear-gradient(135deg, #32b4ab, #4d3e94);
+}
+  </style>
+</head>
+<body>
+  <div id="passwordGate">
+    <div class="gift-icon">🎁</div>
+    <h4 class="mb-3">Ada hadiah buat kamu! 😚</h4>
+    <div class="mb-3 px-3" style="max-width: 300px; width: 100%;">
+      <input type="password" id="passInput" class="form-control text-center" placeholder="Masukkan password...">
+    </div>
+    <button class="btn btn-primary" onclick="checkPassword()">Kirim</button>
+    <p id="wrongPass" class="text-danger mt-3" style="display: none;">Password salah. Coba lagi ya 🥺</p>
+  </div>
+<!-- Musik Latar -->
+<audio autoplay loop>
+  <source src="blue.mp3">
+</audio>
+
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div>
+    <h1>Selamat Ulang Tahun, Wipaaa 🎉</h1>
+    <p class="lead">Makasih ya ucapannya kemarin pas aku sidang</p>
+    <a href="#story" class="btn btn-primary mt-3">Klik dong manis</a>
+  </div>
+</section>
+
+<!-- Cerita Kita -->
+<section id="story" class="py-5 bg-white" style="background: linear-gradient(135deg, #ffe0f0, #ffffff);">
+  <div class="container">
+    <h2 class="mb-4 text-center">Cerita Tentang Kamu</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">📍 Hai kamu yang ultah di Medan.</li>
+      <li class="list-group-item">🌟 Aku dengar senyum kamu manis, boleh lihat gaa???</li>
+      <li class="list-group-item">🍰 Alexnya jangan sering dipukul ya 🤗</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Galeri Kenangan (Dummy Gambar) -->
+<section class="py-5 bg-light" style="background: linear-gradient(135deg, #ffd3b6, #ffe0f0);">
+  <div class="container text-center">
+    <h2 class="mb-4">Wiva life stamp</h2>
+    <div class="row g-3">
+      <div class="col-6 col-md-4">
+        <img src="Baby.jpg"  style="width: 400px; height: 400px;" class="img-fluid rounded" alt="Kenangan 1" >
+      </div>
+      <div class="col-6 col-md-4">
+        <img src="baby2.jpg"  style="width: 400px; height: 400px;" class="img-fluid rounded" alt="Kenangan 2" >
+      </div>
+      <div class="col-6 col-md-4">
+        <img src="adult.jpg" style="width: 400px; height: 400px;" class="img-fluid rounded" alt="Kenangan 3">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pesan Romantis -->
+<section id="message" class="py-5 text-center bg-white" style="background: linear-gradient(135deg, #e0c3fc, #ffffff);">
+  <div class="container">
+    <h2 class="mb-4">Pesan Buat Kamu 💖</h2>
+    <blockquote class="blockquote">
+      <p class="mb-0">"Haii semoga kita cepat ketemu yaaa , can't wait....."</p>
+      <footer class="blockquote-footer mt-3">HAHAHAHA KENAPA YA AKU  BUAT GINIAAN 😊</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- Buka Hadiah -->
+<section class="py-5 text-center bg-light" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb);">
+  <div class="container">
+    <h2>🎁 Aku punya hadiah kecil</h2>
+    <p>Klik tombol ini ya!</p>
+
+    <button class="btn btn-success btn-lg" onclick="startSurprise()">
+      Buka Hadiah 🎉
+    </button>
+
+    <div id="surprise" style="display: none;">
+      <div class="photo-wrapper">
+        <div class="caption" id="caption">Caption 1</div>
+        <img id="photo" class="photo" src="oneday.jpg" alt="Foto Kenangan">
+      </div>
+
+      <p class="lead mt-3">Semoga senyum kamu hari ini jadi lebih lebar dari biasanya 😄</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="py-5 text-center" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">
+    <div class="container text-center">
+    <h4>Kalau salting klik tombol ini yaa🤗🤗</h4>
+      <a href="https://wa.me/6281391826141" 
+       class="btn btn-primary btn-lg rounded-3 px-4"
+       style="background-color: #ff69b4; border: none; color: white;">
+      Cie Salting 💘
+    </a>
+  </div>
+    <!-- <button class="btn btn-success btn-lg" onclick="wa.me/6281391826141">
+      Ciee salting
+    </button> -->
+</section>
+<script>
+    const photoData = [
+    {
+      src: 'oneday.jpg',
+      caption: 'One Day 🌊'
+    },
+    {
+      src: 'dayone.jpg',
+      caption: 'D-1 😄😄'
+    }
+  ];
+
+  let current = 0;
+
+  function startSurprise() {
+    document.getElementById("surprise").style.display = "block";
+    showPhoto(current);
+
+    setInterval(() => {
+      current = (current + 1) % photoData.length;
+      showPhoto(current);
+    }, 4000); // jeda 4 detik antar foto
+  }
+
+  function showPhoto(index) {
+    const photo = document.getElementById("photo");
+    const caption = document.getElementById("caption");
+
+    // hide dulu
+    photo.classList.remove("show");
+    caption.classList.remove("show");
+
+    setTimeout(() => {
+      // update konten
+      photo.src = photoData[index].src;
+      caption.innerText = photoData[index].caption;
+
+      // fade-in lagi
+      photo.classList.add("show");
+      caption.classList.add("show");
+    }, 300); // kasih jeda biar efek fade terasa
+  }
+  const correctPassword = "alex ganteng"; // Ganti dengan password kamu
+
+  function checkPassword() {
+    const input = document.getElementById('passInput').value;
+    if (input === correctPassword) {
+      document.getElementById('passwordGate').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    } else {
+      document.getElementById('wrongPass').style.display = 'block';
+    }
+  }
+</script>
+<!-- Penutup -->
+<footer class="kaki bg-dark text-white text-center py-4">
+  <p class="mb-0">Selamat ulang tahun sekali lagi, Wipaa...</p>
+  <p class="mb-0">@Alex 2024</p>
+  
+</footer>
+
+</body>
+</html>
